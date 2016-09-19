@@ -276,7 +276,9 @@ public class PrincipalWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jCadastrarBtnActionPerformed
 
     private void jEditarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditarBtnActionPerformed
-        // TODO add your handling code here:
+           Cadastro_Funcionario cf = new Cadastro_Funcionario(jLabel1.getText());
+           cf.setVisible(true);
+           this.dispose();
     }//GEN-LAST:event_jEditarBtnActionPerformed
 
     private void jVisualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVisualizarBtnActionPerformed
