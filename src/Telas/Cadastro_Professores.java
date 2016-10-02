@@ -7,6 +7,7 @@ package Telas;
 
 import Classes.Funcionario;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     public Cadastro_Professores(String nome) {
         initComponents();
         jLabel1.setText(nome);
+        jLabelMsg.setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,6 +35,7 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelMsg = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -45,11 +48,16 @@ public class Cadastro_Professores extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(600, 516));
         setPreferredSize(new java.awt.Dimension(600, 544));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLabelMsg.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelMsg.setText("Por favor preencha todos os campos!");
+        getContentPane().add(jLabelMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 435, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField1.setBorder(null);
@@ -62,6 +70,14 @@ public class Cadastro_Professores extends javax.swing.JFrame {
 
         jTextField2.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField2.setBorder(null);
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 153, 290, -1));
 
         jTextField3.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -126,7 +142,15 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     }//GEN-LAST:event_jLCadastrarBtnMouseEntered
 
     private void jLCadastrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCadastrarBtnMouseClicked
-        Funcionario fun = new Funcionario(jTextField2.getText(),jTextField6.getText(),jTextField7.getText());
+        
+        if(jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField3.getText().equals("")
+                || jTextField4.getText().equals("") || jTextField5.getText().equals("") || jTextField6.getText().equals("")
+                || jTextField7.getText().equals("")){
+            
+            jLabelMsg.setVisible(true);
+        }else{
+        
+            Funcionario fun = new Funcionario(jTextField2.getText(),jTextField6.getText(),jTextField7.getText());
             fun.setCPF(jTextField1.getText());
             fun.setRG(jTextField3.getText());
             fun.setEmail(jTextField4.getText());
@@ -141,6 +165,7 @@ public class Cadastro_Professores extends javax.swing.JFrame {
             else{
                 JOptionPane.showMessageDialog(null, "Erro ao Cadastrar");  
             }
+        }
     }//GEN-LAST:event_jLCadastrarBtnMouseClicked
 
     private void jLLimparBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLLimparBtnMouseClicked
@@ -157,6 +182,21 @@ public class Cadastro_Professores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLLimparBtnMouseEntered
 
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        maxLengthLimit(jTextField2, 20);
+    }//GEN-LAST:event_jTextField2KeyPressed
+    
+    
+    public void maxLengthLimit(JTextField field, int length){
+        if(field.getText().length() >= length){
+            field.setText(field.getText().substring(0, (length-1)));
+        }               
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -198,6 +238,7 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     private javax.swing.JLabel jLLimparBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelMsg;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
