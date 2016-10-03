@@ -6,8 +6,8 @@
 package Telas;
 
 import Classes.Funcionario;
+import Classes.TextFieldValidator;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -15,6 +15,8 @@ import javax.swing.JTextField;
  */
 public class Cadastro_Professores extends javax.swing.JFrame {
 
+    TextFieldValidator validator = new TextFieldValidator();
+    
     /**
      * Creates new form Cadastro_Professores
      */
@@ -24,7 +26,11 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     public Cadastro_Professores(String nome) {
         initComponents();
         jLabel1.setText(nome);
+        
         jLabelMsg.setVisible(false);
+        jLRGMsg.setVisible(false);
+        jLCPFMsg.setVisible(false);
+        jLEmailMsg.setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +42,9 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelMsg = new javax.swing.JLabel();
+        jLRGMsg = new javax.swing.JLabel();
+        jLCPFMsg = new javax.swing.JLabel();
+        jLEmailMsg = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -54,16 +63,59 @@ public class Cadastro_Professores extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabelMsg.setBackground(new java.awt.Color(231, 76, 60));
         jLabelMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
-        jLabelMsg.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMsg.setText("Por favor preencha todos os campos!");
-        getContentPane().add(jLabelMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 435, -1, -1));
+        jLabelMsg.setOpaque(true);
+        getContentPane().add(jLabelMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 435, 230, -1));
+
+        jLRGMsg.setBackground(new java.awt.Color(241, 196, 15));
+        jLRGMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLRGMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLRGMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLRGMsg.setText("Somente números!");
+        jLRGMsg.setOpaque(true);
+        getContentPane().add(jLRGMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 185, 120, -1));
+
+        jLCPFMsg.setBackground(new java.awt.Color(241, 196, 15));
+        jLCPFMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLCPFMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLCPFMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCPFMsg.setText("Somente números!");
+        jLCPFMsg.setOpaque(true);
+        getContentPane().add(jLCPFMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 124, 120, -1));
+
+        jLEmailMsg.setBackground(new java.awt.Color(231, 76, 60));
+        jLEmailMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLEmailMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLEmailMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLEmailMsg.setText("Por favor insira um email válido!");
+        jLEmailMsg.setOpaque(true);
+        getContentPane().add(jLEmailMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 185, 200, -1));
 
         jTextField1.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField1.setBorder(null);
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
             }
         });
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 153, 210, -1));
@@ -82,23 +134,56 @@ public class Cadastro_Professores extends javax.swing.JFrame {
 
         jTextField3.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField3.setBorder(null);
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 214, 210, -1));
 
         jTextField4.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField4.setBorder(null);
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 214, 290, -1));
 
         jTextField5.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField5.setBorder(null);
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 275, 540, -1));
 
         jTextField7.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField7.setBorder(null);
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 397, 290, -1));
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 397, 210, -1));
 
         jTextField6.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
         jTextField6.setBorder(null);
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 397, 210, -1));
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 397, 290, -1));
 
         jLLimparBtn.setPreferredSize(new java.awt.Dimension(34, 12));
         jLLimparBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,8 +233,12 @@ public class Cadastro_Professores extends javax.swing.JFrame {
                 || jTextField7.getText().equals("")){
             
             jLabelMsg.setVisible(true);
+        }else if(!validator.emailValidate(jTextField4)){            
+            jLEmailMsg.setVisible(true);      
         }else{
-        
+            
+            jLEmailMsg.setVisible(false);  
+            
             Funcionario fun = new Funcionario(jTextField2.getText(),jTextField6.getText(),jTextField7.getText());
             fun.setCPF(jTextField1.getText());
             fun.setRG(jTextField3.getText());
@@ -187,15 +276,55 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
-        maxLengthLimit(jTextField2, 20);
+        validator.maxLengthLimit(jTextField2, 40);
     }//GEN-LAST:event_jTextField2KeyPressed
-    
-    
-    public void maxLengthLimit(JTextField field, int length){
-        if(field.getText().length() >= length){
-            field.setText(field.getText().substring(0, (length-1)));
-        }               
-    }
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        validator.numericValidate(evt);
+        validator.maxLengthLimit(jTextField1, 11);        
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jLCPFMsg.setVisible(true);
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        jLCPFMsg.setVisible(false);
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        jLRGMsg.setVisible(true);
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        jLRGMsg.setVisible(false);
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        validator.numericValidate(evt);
+        validator.maxLengthLimit(jTextField3, 13);
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        validator.maxLengthLimit(jTextField4, 30);
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        validator.maxLengthLimit(jTextField5, 40);
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        validator.maxLengthLimit(jTextField7, 20);
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        validator.maxLengthLimit(jTextField6, 20);
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        
+    }//GEN-LAST:event_jTextField1KeyPressed
+            
     
     /**
      * @param args the command line arguments
@@ -234,8 +363,11 @@ public class Cadastro_Professores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLCPFMsg;
     private javax.swing.JLabel jLCadastrarBtn;
+    private javax.swing.JLabel jLEmailMsg;
     private javax.swing.JLabel jLLimparBtn;
+    private javax.swing.JLabel jLRGMsg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelMsg;

@@ -43,7 +43,7 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
         jCadastrarBtn = new javax.swing.JButton();
         jLimparBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setBackground(new java.awt.Color(51, 255, 51));
