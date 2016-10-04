@@ -249,7 +249,7 @@ public class Cadastro_Professores extends javax.swing.JFrame {
             boolean cds = fun.cadastrar_funcionario( fun, User_Login);
             if(!(true == cds)){
                 JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
-                //jButton1ActionPerformed(evt);
+                jLLimparBtnMouseClicked(evt);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Erro ao Cadastrar");  

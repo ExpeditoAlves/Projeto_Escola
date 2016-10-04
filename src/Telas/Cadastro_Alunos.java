@@ -1,6 +1,7 @@
 package Telas;
 
 import Classes.Aluno;
+import Classes.TextFieldValidator;
 import javax.swing.JOptionPane;
 
 /**
@@ -8,7 +9,9 @@ import javax.swing.JOptionPane;
  * @author Ditto66
  */
 public class Cadastro_Alunos extends javax.swing.JFrame {
-
+    
+    TextFieldValidator validator = new TextFieldValidator();
+    
     /**
      * Creates new form Cadastro_Alunos
      */
@@ -18,6 +21,11 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
    public Cadastro_Alunos(String nome) {
         initComponents();
         Login.setText(nome);
+        
+        jLabelMsg.setVisible(false);
+        jLRGMsg.setVisible(false);
+        jLCPFMsg.setVisible(false);
+        jLEmailMsg.setVisible(false);
     }
 
     /**
@@ -29,208 +37,230 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Login = new javax.swing.JLabel();
-        label1 = new java.awt.Label();
-        jLabel1 = new javax.swing.JLabel();
+        jLRGMsg = new javax.swing.JLabel();
+        jLEmailMsg = new javax.swing.JLabel();
+        jLabelMsg = new javax.swing.JLabel();
         Nome = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         CPF = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         RG = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         Email = new javax.swing.JTextField();
-        jLimparBtn = new javax.swing.JButton();
-        jCadastrarBtn = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         Serie = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         Turno = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         Rua = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         Num = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         Pai = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         Mae = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        jLCPFMsg = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLLimpar = new javax.swing.JLabel();
+        jLCadastrar = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jCadastrarBtn = new javax.swing.JButton();
+        jLimparBtn = new javax.swing.JButton();
+        Login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Login.setText("jLabel1");
+        jLRGMsg.setBackground(new java.awt.Color(241, 196, 15));
+        jLRGMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLRGMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLRGMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLRGMsg.setText("Somente números!");
+        jLRGMsg.setOpaque(true);
+        getContentPane().add(jLRGMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 185, 120, -1));
 
-        label1.setAlignment(java.awt.Label.CENTER);
-        label1.setBackground(new java.awt.Color(102, 255, 102));
-        label1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        label1.setText("CADASTRO DE ALUNOS");
+        jLEmailMsg.setBackground(new java.awt.Color(231, 76, 60));
+        jLEmailMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLEmailMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLEmailMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLEmailMsg.setText("Por favor insira um email válido!");
+        jLEmailMsg.setOpaque(true);
+        getContentPane().add(jLEmailMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 185, 200, -1));
 
-        jLabel1.setText("Nome:");
+        jLabelMsg.setBackground(new java.awt.Color(231, 76, 60));
+        jLabelMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLabelMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMsg.setText("Por favor preencha todos os campos!");
+        jLabelMsg.setOpaque(true);
+        getContentPane().add(jLabelMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 610, 230, -1));
 
-        jLabel2.setText("CPF:");
-
-        jLabel3.setText("RG:");
-
-        jLabel4.setText("E-mail:");
-
-        jLimparBtn.setText("Limpar");
-        jLimparBtn.addActionListener(new java.awt.event.ActionListener() {
+        Nome.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Nome.setBorder(null);
+        Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLimparBtnActionPerformed(evt);
+                NomeActionPerformed(evt);
             }
         });
+        Nome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NomeKeyTyped(evt);
+            }
+        });
+        getContentPane().add(Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 152, 290, -1));
 
-        jCadastrarBtn.setText("Cadastrar");
+        CPF.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        CPF.setBorder(null);
+        CPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                CPFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                CPFFocusLost(evt);
+            }
+        });
+        CPF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CPFKeyTyped(evt);
+            }
+        });
+        getContentPane().add(CPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 152, 210, -1));
+
+        RG.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        RG.setBorder(null);
+        RG.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                RGFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RGFocusLost(evt);
+            }
+        });
+        RG.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                RGKeyTyped(evt);
+            }
+        });
+        getContentPane().add(RG, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 212, 210, -1));
+
+        Email.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Email.setBorder(null);
+        Email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EmailKeyTyped(evt);
+            }
+        });
+        getContentPane().add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 212, 290, -1));
+
+        Serie.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Serie.setBorder(null);
+        getContentPane().add(Serie, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 273, 39, -1));
+
+        Turno.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Turno.setAlignmentY(0.3F);
+        Turno.setBorder(null);
+        getContentPane().add(Turno, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 273, 39, -1));
+
+        Rua.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Rua.setBorder(null);
+        Rua.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                RuaKeyTyped(evt);
+            }
+        });
+        getContentPane().add(Rua, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 578, 430, -1));
+
+        Num.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Num.setBorder(null);
+        Num.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NumKeyTyped(evt);
+            }
+        });
+        getContentPane().add(Num, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 578, 70, -1));
+
+        Pai.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Pai.setBorder(null);
+        Pai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PaiKeyTyped(evt);
+            }
+        });
+        getContentPane().add(Pai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 394, 530, -1));
+
+        Mae.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
+        Mae.setBorder(null);
+        Mae.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MaeKeyTyped(evt);
+            }
+        });
+        getContentPane().add(Mae, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, 530, -1));
+
+        jLCPFMsg.setBackground(new java.awt.Color(241, 196, 15));
+        jLCPFMsg.setFont(new java.awt.Font("Open Sans", 1, 12)); // NOI18N
+        jLCPFMsg.setForeground(new java.awt.Color(255, 255, 255));
+        jLCPFMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCPFMsg.setText("Somente números!");
+        jLCPFMsg.setOpaque(true);
+        getContentPane().add(jLCPFMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 123, 120, -1));
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(596, 60));
+        jPanel1.setMinimumSize(new java.awt.Dimension(596, 60));
+        jPanel1.setName(""); // NOI18N
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(596, 60));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+
+        jLLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLLimparMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLLimpar);
+
+        jLCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCadastrarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLCadastrar);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 634, -1, 45));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CadastrarAlunoWindow.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jCadastrarBtn.setBackground(new java.awt.Color(255, 255, 255));
+        jCadastrarBtn.setFocusPainted(false);
         jCadastrarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCadastrarBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(jCadastrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 640, 280, 36));
 
-        jLabel5.setText("Série:");
-        jLabel5.setAlignmentY(0.3F);
+        jLimparBtn.setBackground(new java.awt.Color(255, 255, 255));
+        jLimparBtn.setFocusPainted(false);
+        jLimparBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLimparBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jLimparBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 280, 36));
 
-        jLabel6.setText("Turno:");
-        jLabel6.setAlignmentY(0.3F);
-
-        Turno.setAlignmentY(0.3F);
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jLabel7.setText("Num:");
-
-        jLabel8.setText("Pai:");
-
-        jLabel9.setText("Mãe:");
-
-        jLabel10.setText("Rua:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)
-                        .addComponent(Login)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Serie, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel6)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(RG, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(39, 39, 39)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Num, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Pai, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Mae, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Rua, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(41, 41, 41))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLimparBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jCadastrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Login))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(RG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Serie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(Turno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(Pai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(Mae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(Rua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(Num, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLimparBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCadastrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-        );
+        Login.setText("jLabel1");
+        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 21, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NomeActionPerformed
+
     private void jLimparBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLimparBtnActionPerformed
+        
+    }//GEN-LAST:event_jLimparBtnActionPerformed
+
+    private void jCadastrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarBtnActionPerformed
+        
+    }//GEN-LAST:event_jCadastrarBtnActionPerformed
+
+    private void jLLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLLimparMouseClicked
         CPF.setText("");
         Nome.setText("");
         RG.setText("");
@@ -241,31 +271,91 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
         Pai.setText("");
         Serie.setText("");
         Turno.setText("");
-    }//GEN-LAST:event_jLimparBtnActionPerformed
+    }//GEN-LAST:event_jLLimparMouseClicked
 
-    private void jCadastrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarBtnActionPerformed
-        String nome = Nome.getText();
-        String cpf = CPF.getText();
-        String rg = RG.getText();
-        String email = Email.getText();
-        String pai = Pai.getText();
-        String mae = Mae.getText();
-        String rua = Rua.getText();
-        String num = Num.getText();
-        String serie = Serie.getText();
-        String turno = Turno.getText();
-        String User_Login = Login.getText(); 
+    private void jLCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCadastrarMouseClicked
+        if(CPF.getText().equals("") || Email.getText().equals("") || Nome.getText().equals("") || RG.getText().equals("")
+                || Serie.getText().equals("") || Turno.getText().equals("") || Pai.getText().equals("") || Mae.getText().equals("")
+                || Rua.getText().equals("") || Num.getText().equals("")){
+            
+            jLabelMsg.setVisible(true);
+        }else if(!validator.emailValidate(Email)){            
+            jLEmailMsg.setVisible(true);      
+        }else{
+            String nome = Nome.getText();
+            String cpf = CPF.getText();
+            String rg = RG.getText();
+            String email = Email.getText();
+            String pai = Pai.getText();
+            String mae = Mae.getText();
+            String rua = Rua.getText();
+            String num = Num.getText();
+            String serie = Serie.getText();
+            String turno = Turno.getText();
+            String User_Login = Login.getText();
 
-        Aluno alu = new Aluno(pai,mae,num,rg,cpf,email,nome,rua);
-        boolean cda = alu.cadastrar_aluno(alu, User_Login, serie,turno);
-        if(!(true == cda)){
-            JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
-            jLimparBtnActionPerformed(evt);
+            Aluno alu = new Aluno(pai,mae,num,rg,cpf,email,nome,rua);
+            boolean cda = alu.cadastrar_aluno(alu, User_Login, serie,turno);
+            if(!(true == cda)){
+                JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
+                jLLimparMouseClicked(evt);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Erro ao Cadastrar");
+            }
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Erro ao Cadastrar");
-        }
-    }//GEN-LAST:event_jCadastrarBtnActionPerformed
+    }//GEN-LAST:event_jLCadastrarMouseClicked
+
+    private void CPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CPFFocusGained
+        jLCPFMsg.setVisible(true);        
+    }//GEN-LAST:event_CPFFocusGained
+
+    private void RGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RGFocusLost
+        jLRGMsg.setVisible(false);
+    }//GEN-LAST:event_RGFocusLost
+
+    private void CPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CPFFocusLost
+        jLCPFMsg.setVisible(false);
+    }//GEN-LAST:event_CPFFocusLost
+
+    private void RGFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RGFocusGained
+        jLRGMsg.setVisible(true);
+    }//GEN-LAST:event_RGFocusGained
+
+    private void CPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CPFKeyTyped
+        validator.numericValidate(evt);
+        validator.maxLengthLimit(CPF, 11);
+    }//GEN-LAST:event_CPFKeyTyped
+
+    private void RGKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RGKeyTyped
+        validator.numericValidate(evt);
+        validator.maxLengthLimit(RG, 13);
+    }//GEN-LAST:event_RGKeyTyped
+
+    private void NomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NomeKeyTyped
+        validator.maxLengthLimit(Nome, 40);
+    }//GEN-LAST:event_NomeKeyTyped
+
+    private void EmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyTyped
+        validator.maxLengthLimit(Email, 30);
+    }//GEN-LAST:event_EmailKeyTyped
+
+    private void PaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PaiKeyTyped
+        validator.maxLengthLimit(Pai, 40);
+    }//GEN-LAST:event_PaiKeyTyped
+
+    private void MaeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MaeKeyTyped
+        validator.maxLengthLimit(Mae, 40);
+    }//GEN-LAST:event_MaeKeyTyped
+
+    private void RuaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RuaKeyTyped
+        validator.maxLengthLimit(Rua, 50);
+    }//GEN-LAST:event_RuaKeyTyped
+
+    private void NumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NumKeyTyped
+        validator.numericValidate(evt);
+        validator.maxLengthLimit(Num, 4);
+    }//GEN-LAST:event_NumKeyTyped
 
     /**
      * @param args the command line arguments
@@ -278,7 +368,7 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -317,18 +407,14 @@ public class Cadastro_Alunos extends javax.swing.JFrame {
     private javax.swing.JTextField Serie;
     private javax.swing.JTextField Turno;
     private javax.swing.JButton jCadastrarBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLCPFMsg;
+    private javax.swing.JLabel jLCadastrar;
+    private javax.swing.JLabel jLEmailMsg;
+    private javax.swing.JLabel jLLimpar;
+    private javax.swing.JLabel jLRGMsg;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabelMsg;
     private javax.swing.JButton jLimparBtn;
-    private javax.swing.JSeparator jSeparator1;
-    private java.awt.Label label1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
