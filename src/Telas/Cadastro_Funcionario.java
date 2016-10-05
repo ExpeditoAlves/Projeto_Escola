@@ -26,7 +26,6 @@ public class Cadastro_Funcionario extends javax.swing.JFrame {
         Login.setText(nome);
         
         jLabelMsg.setVisible(false);
-        jLabelMsg.setVisible(false);
     }
 
     /**
